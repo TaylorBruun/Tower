@@ -6,25 +6,15 @@ export class CommentsController extends BaseController {
     constructor() {
         super('api/comments')
         this.router
-            // .get('', this.getEventComments)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.create)
             .delete('/:id', this.delete)
     }
-    // async getEventComments(req, res, next) {
-    //    try {
-    //     eventId = req.
-    //      const comments = await commentsService.getEventComments(eventId)
-    //    } catch (error) {
-    //     next(error)
-    //    }
-    // }
-
-
+    
 
     async create(req, res, next) {
         try {
-            req.body.accountId = req.userInfo.id
+            req.body.creatorId = req.userInfo.id
             const comment = await commentsService.create(req.body)
             return res.send(comment)
         } catch (error) {
@@ -34,7 +24,7 @@ export class CommentsController extends BaseController {
 
     delete(req, res, next) {
         try {
-            req.body.accountId = req.userInfo.id
+            req.body.creatorId = req.userInfo.id
             req.body.id = req.params.id
             const message = commentsService.delete(req.body)
             return res.send(message)
