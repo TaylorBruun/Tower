@@ -1,36 +1,64 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo" class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+  <div class="bg-dark container-fluid">
+
+<div class="row ">
+  <div class="col d-flex justify-content-around">
+
+    <button @click="filterEvents = ''" class=" m-1 btn btn-secondary">All</button>
+    
+    <button @click="filterEvents = 'concert'" class=" m-1 btn btn-secondary">Concert</button>
+    <button @click="filterEvents = 'convention'" class=" m-1 btn btn-secondary">Convention</button>
+    <button @click="filterEvents = 'sport'" class=" m-1 btn btn-secondary">Sport</button>
+    <button @click="filterEvents = 'digital'" class=" m-1 btn btn-secondary">Digital</button>
+
+  </div>
+</div>
+    <div class="row d-flex justify-content-between">
+
+      <TowerEvent v-for="e in events" :key="e.id" :events="e" />
+
     </div>
   </div>
+    
+  
 </template>
 
 <script>
+import { computed, onMounted, ref } from 'vue'
+import Pop from '../utils/Pop'
+import {eventsService} from '../services/EventsService'
+import TowerEvent from '../components/TowerEvent.vue'
+import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
+import EventForm from '../components/EventForm.vue'
+
+
+
 export default {
-  name: 'Home'
+  name: "Home",
+  setup() {
+    const filterEvents = ref('')
+    onMounted(async () => {
+      try {
+        await eventsService.getEvents();
+      }
+      catch (error) {
+        Pop.error(error);
+      }
+    });
+    return {
+      filterEvents,
+     
+      events: computed(() => AppState.events)
+
+// TODO filter by ref value in filterEvents
+      // events: computed(() => AppState.events.filter(e =>  filterEvents.value ? e.type == filterEvents.value : true)),
+    };
+  },
+  components: { TowerEvent, EventForm }
 }
 </script>
 
 <style scoped lang="scss">
-.home{
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-  .home-card{
-    width: 50vw;
-    > img{
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
-}
+
 </style>

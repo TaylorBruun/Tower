@@ -1,5 +1,6 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
 import { authGuard } from '@bcwdev/auth0provider-client'
+import { createRouter, createWebHashHistory } from 'vue-router'
+
 
 function loadPage(page) {
   return () => import(`./pages/${page}.vue`)
@@ -21,6 +22,12 @@ const routes = [
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/event/:id',
+    name: 'EventDetails',
+    component: loadPage('EventPage'),
+    
   }
 ]
 

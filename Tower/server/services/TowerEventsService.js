@@ -25,7 +25,7 @@ class TowerEventsService{
     async update(id, update) {
         const original = await dbContext.TowerEvents.findById(id).populate('creator', 'name picture')
         if (original.creatorId.toString() != update.creatorId) {
-            throw new BadRequest("you don't have permission to edit that project")
+            throw new BadRequest("you don't have permission to edit that event")
         }
         if (original.isCanceled){
             throw new BadRequest("That event is cancelled")
@@ -44,7 +44,7 @@ class TowerEventsService{
     async cancelEvent(id, body) {
         const original = await dbContext.TowerEvents.findById(id).populate('creator', 'name picture')
         if (original.creatorId.toString() != body.creatorId) {
-            throw new BadRequest("you don't have permission to edit that project")
+            throw new BadRequest("you don't have permission to edit that event")
         }
         if (original.isCanceled){
             throw new BadRequest("That event is already cancelled")
@@ -57,7 +57,7 @@ class TowerEventsService{
     async delete(eventId, userId) {
         const event = await dbContext.TowerEvents.findById(eventId)
         if(event.creatorId.toString() != userId){
-            throw new BadRequest("you don't have permission to delete that project")
+            throw new BadRequest("you don't have permission to delete that event")
           }
           await event.remove()
     }

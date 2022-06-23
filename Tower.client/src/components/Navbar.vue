@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+       Tower
       </div>
     </router-link>
     <button
@@ -26,18 +26,52 @@
             About
           </router-link>
         </li>
+        <li>
+          <button
+            @click=""
+            data-bs-toggle="modal" data-bs-target="#create-event"
+            class="btn text-success lighten-30 selectable text-uppercase"
+          >
+            New Event
+          </button>
+        </li>
+        
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
   </nav>
+
+
+
+
+<div class="modal fade" id="create-event" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create a new event</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <EventForm />
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </template>
 
 <script>
+import EventForm from './EventForm.vue';
 export default {
-  setup() {
-    return {};
-  },
+    setup() {
+        return {};
+    },
+    components: { EventForm }
 };
 </script>
 
