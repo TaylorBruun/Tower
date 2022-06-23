@@ -14,7 +14,6 @@ export class TicketsController extends BaseController {
     async getAll(req, res, next) {
         try {
             const tickets = await ticketsService.getAll(req.query)
-            console.log("returning tickets");
             return res.send(tickets)
         } catch (error) {
             next(error)
@@ -32,11 +31,11 @@ export class TicketsController extends BaseController {
        }
     }
    
-    delete(req, res, next) {
+    async delete(req, res, next) {
         try {
             req.body.accountId = req.userInfo.id
             req.body.id = req.params.id
-            const message = ticketsService.delete(req.body)
+            const message = await ticketsService.delete(req.body)
             return res.send(message)
         } catch (error) {
             next(error)

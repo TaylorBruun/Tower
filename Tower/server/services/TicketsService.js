@@ -34,9 +34,15 @@ class TicketsService{
        let accountId = body.accountId 
        let eventId = body.eventId
         let alreadyTicketed = await dbContext.Tickets.findOne({eventId, accountId})
+        let event = await dbContext.TowerEvents.findById(eventId)
+        
         if (alreadyTicketed){
             throw new BadRequest("You already have a ticket for this event")
         }
+        if (event.capacity <=0 ){
+            throw new BadRequest("That event has no tickets remaining")
+        }
+        
         let ticket = await dbContext.Tickets.create(body)
         
         await ticket.populate('account', 'name picture')
@@ -48,7 +54,6 @@ class TicketsService{
 
        
     async delete(body) {
-        
         const ticket = await dbContext.Tickets.findById(body.id)
         if(ticket.accountId.toString() != body.accountId){
             throw new BadRequest("you don't have permission to delete that ticket")

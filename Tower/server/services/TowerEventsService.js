@@ -15,6 +15,9 @@ class TowerEventsService{
         return event
     }
     async create(body) {
+        if(Date.parse(body.startDate) < Date.now()){
+            throw new BadRequest ("Events must be set for a future date")
+        }
         let event = await dbContext.TowerEvents.create(body)
         await  event.populate('creator', 'name picture')
         return event
