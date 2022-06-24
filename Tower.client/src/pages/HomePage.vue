@@ -5,7 +5,6 @@
   <div class="col d-flex justify-content-around">
 
     <button @click="filterEvents = ''" class=" m-1 btn btn-secondary">All</button>
-    
     <button @click="filterEvents = 'concert'" class=" m-1 btn btn-secondary">Concert</button>
     <button @click="filterEvents = 'convention'" class=" m-1 btn btn-secondary">Convention</button>
     <button @click="filterEvents = 'sport'" class=" m-1 btn btn-secondary">Sport</button>
@@ -49,10 +48,9 @@ export default {
     return {
       filterEvents,
      
-      events: computed(() => AppState.events)
-
-// TODO filter by ref value in filterEvents
-      // events: computed(() => AppState.events.filter(e =>  filterEvents.value ? e.type == filterEvents.value : true)),
+      
+      // TODO is it possible to put a transition on this filter? it is very abrupt
+      events: computed(() => AppState.events.filter(e =>  filterEvents.value ? e.type == filterEvents.value : true)),
     };
   },
   components: { TowerEvent, EventForm }

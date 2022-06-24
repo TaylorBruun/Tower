@@ -1,11 +1,11 @@
 <template>
-    <div  class="event-card selectable elevation-4 p-2 m-2 col-5">
-       
+    <div @click="selectEvent" class="event-card selectable elevation-4 p-2 m-2 col-5">
+
         <img class="img-fluid" :src="events.coverImg" alt="">
-<h6 class="text-muted">{{formatDate(events.startDate)}}</h6>
-<h3>{{events.name}}</h3>
-<h5>{{events.location}}</h5>
-<h6 :class="{'text-danger': (events.capacity <= 0)}">Tickets remaining: {{events.capacity}}</h6>
+        <h6 class="text-muted">{{ formatDate(events.startDate) }}</h6>
+        <h3>{{ events.name }}</h3>
+        <h5>{{ events.location }}</h5>
+        <h6 :class="{'text-danger': (events.capacity <= 0)}">Tickets remaining: {{events.capacity}}</h6>
 
     </div>
 </template>
@@ -13,19 +13,25 @@
 
 <script>
 import { computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { AppState } from '../AppState'
+import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 
 export default {
     props: { events: { type: Object, required: true}},
     
-    setup(){
-        
+    setup(props){
+        const router = useRouter()
         return {
             
             formatDate(rawDate){
                 return new Date(rawDate).toLocaleDateString()
+            },
+
+            selectEvent(){
+                logger.log("pushing with id", props.events.id)
+                router.push({name: "EventDetails", params: {id: props.events.id}})
             }
         }
     }
@@ -38,12 +44,8 @@ export default {
     color: rgb(223, 243, 255);
     background-color: #283853;
     transition: all .2s ease;
-
-    
  }
-
  .event-card:hover{
     transform: scale(1.02);
-    
  }
 </style>
