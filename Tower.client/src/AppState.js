@@ -6,5 +6,8 @@ export const AppState = reactive({
   account: {},
   events: [],
   comments:[],
+  currTickets:[],
+  eventsAttending:[],
+  myTickets:[]
   // eventTypes:['concert', 'convention', 'sport', 'digital']
 })

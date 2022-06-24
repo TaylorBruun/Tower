@@ -69,7 +69,8 @@ export default {
                     await eventsService.createEvent(eventData)
                     Pop.toast('Event listed', 'success')
                     Modal.getOrCreateInstance(document.getElementById('create-event')).hide()
-                    router.push({name: "EventDetails", params: {id: eventData.id}})
+                    // NOTE this hits an undefined id currently
+                    // router.push({name: "EventDetails", params: {id: eventData.id}})
                     editable.value = {}
                 } catch (error) {
                     Pop.error(error)

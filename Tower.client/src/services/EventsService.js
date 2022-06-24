@@ -14,6 +14,19 @@ async createEvent(body){
     logger.log (res.data)
     AppState.events.unshift(res.data)
 }
+async cancelEvent(eventId){
+    const res = await api.delete(`api/events/${eventId}`)
+    logger.log ("deleting", res.data)
+    let found = AppState.events.find(e => e.id == eventId)
+    found.isCanceled = !found.isCanceled
+    return res.data   
+}
+
+getEventsForMyTickets(){
+    let eventIds = []
+    AppState.myTickets.forEach(t => eventIds.push(t.eventId))
+    AppState.eventsAttending = AppState.events.filter(e => eventIds.includes(e.id))
+}
 
 }
 

@@ -1,7 +1,15 @@
 <template>
    <div class="col comment-card">
+    <h6>
+        <img class="comment-img" :src="comment.creator.picture" alt="">
+        {{comment.creator.name}}
+    </h6>
+    <h6>
+       <i @click="removeComment(comment.id)" v-if="account.id == comment.creatorId" title="Remove comment" class="cancel-btn mdi mdi-close-circle"></i> {{comment.body}} 
+    </h6>
 
-       !!!!!!!!It's a comment!!!!!!!!
+
+
    </div>
 
     
@@ -9,9 +17,20 @@
 
 
 <script>
+import { computed } from 'vue'
+import { AppState } from '../AppState'
+import { commentsService } from '../services/CommentsService'
+
+
 export default {
+     props: { comment: { type: Object, required: false } },
     setup(){
-        return {}
+        return {
+            async removeComment(id){
+                await commentsService.removeComment(id)
+            },
+            account: computed(()=> AppState.account),
+        }
     }
 }
 </script>
@@ -23,7 +42,22 @@ export default {
     background-color: #283853;
     transition: all .2s ease;
  }
- .comment-card:hover{
-    transform: scale(1.02);
+ .comment-img{
+    max-height: 20px;
  }
+ .comment-card:hover{
+    background-color: #222f44;
+ }
+
+ .cancel-btn{
+    color:red;
+    cursor: pointer
+    
+}
+.cancel-btn:hover{
+    color: rgb(185, 25, 25);
+
+}
+
+
 </style>
