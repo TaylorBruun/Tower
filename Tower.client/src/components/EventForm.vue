@@ -55,6 +55,7 @@ import Pop from "../utils/Pop"
 import { onMounted, watchEffect } from '@vue/runtime-core'
 import { Modal } from "bootstrap"
 import { useRouter } from "vue-router"
+import { logger } from "../utils/Logger"
 
 export default {
     props: { event: { type: Object, required: false } },
@@ -66,11 +67,12 @@ export default {
             async createEvent() {
                 try {
                     let eventData = editable.value
-                    await eventsService.createEvent(eventData)
+                    let newEvent = await eventsService.createEvent(eventData)
+                    logger.log('here is the new event', newEvent)
                     Pop.toast('Event listed', 'success')
                     Modal.getOrCreateInstance(document.getElementById('create-event')).hide()
-                    // NOTE this hits an undefined id currently
-                    // router.push({name: "EventDetails", params: {id: eventData.id}})
+                    
+                    router.push({name: "EventDetails", params: {id: newEvent.id}})
                     editable.value = {}
                 } catch (error) {
                     Pop.error(error)

@@ -13,6 +13,7 @@ async createEvent(body){
     const res = await api.post('api/events', body)
     logger.log (res.data)
     AppState.events.unshift(res.data)
+    return res.data
 }
 async cancelEvent(eventId){
     const res = await api.delete(`api/events/${eventId}`)
