@@ -1,0 +1,1 @@
+import{_ as e}from"./index.e3eab415.js";import{o,b as t,d as s}from"./vendor.da070880.js";const a={name:"AccountPage"},c={class:"account"},n=s("h1",null,"This is the future account page page",-1),r=[n];function _(d,i,p,u,f,h){return o(),t("div",c,r)}var g=e(a,[["render",_]]);export{g as default};
