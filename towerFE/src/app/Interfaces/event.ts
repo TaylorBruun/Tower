@@ -1,5 +1,5 @@
 
-enum eventType {'concert', 'convention', 'sport', 'digital'}
+export enum eventType {'concert', 'convention', 'sport', 'digital'}
 
 export interface Event  {
     creatorId: String,
@@ -10,5 +10,10 @@ export interface Event  {
     capacity: Number, 
     startDate: Date,
     isCanceled: Boolean, 
-    type: eventType
+    type: eventType,
+    creator: {
+        id: String,
+        name: String,
+        picture: String
+    }
 }

@@ -1,0 +1,21 @@
+.comment-card{
+    color: rgb(223, 243, 255);
+    background-color: #283853;
+    transition: all .2s ease;
+ }
+ .comment-img{
+    max-height: 20px;
+ }
+ .comment-card:hover{
+    background-color: #222f44;
+ }
+
+ .cancel-btn{
+    color:red;
+    cursor: pointer
+    
+}
+.cancel-btn:hover{
+    color: rgb(185, 25, 25);
+
+}

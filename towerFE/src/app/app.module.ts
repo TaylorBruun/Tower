@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { AccountComponent } from './components/account/account.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AccountComponent } from './components/account/account.component';
     AboutComponent,
     HomeComponent,
     AccountComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
