@@ -10,8 +10,7 @@
                 </li>
                 
                 <li class="nav-item btn">
-                    <a routerLink="/account">Account</a>
-
+                    <a *ngIf="auth.isAuthenticated$ | async" routerLink="/account">Account</a>
                 </li>
                 
             </ul>
