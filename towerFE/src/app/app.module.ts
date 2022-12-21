@@ -8,6 +8,8 @@ import { EventComponent } from './components/event/event.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     EventComponent,
     AuthButtonComponent,
     NavbarComponent,
+    AboutComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
