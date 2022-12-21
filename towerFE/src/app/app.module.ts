@@ -10,6 +10,7 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
+import { AccountComponent } from './components/account/account.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { HomeComponent } from './components/home/home.component';
     NavbarComponent,
     AboutComponent,
     HomeComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
