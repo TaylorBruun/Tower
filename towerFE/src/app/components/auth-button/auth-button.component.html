@@ -1,0 +1,11 @@
+<ng-container *ngIf="auth.isAuthenticated$ | async; else loginTemplate">
+    <button class="btn btn-outline-warning" (click)="auth.logout({ returnTo: document.location.origin})">Log out</button>
+
+</ng-container>
+
+<ng-template #loginTemplate>
+    <button class="btn btn-outline-success" (click)="auth.loginWithRedirect()">Log in</button>
+
+</ng-template>
+
+<h3>{{auth.isAuthenticated$ | async}}</h3>

@@ -1,0 +1,9 @@
+.event-card {
+    color: rgb(223, 243, 255);
+    background-color: #283853;
+    transition: all .2s ease;
+}
+
+.event-card:hover {
+    transform: scale(1.02);
+}

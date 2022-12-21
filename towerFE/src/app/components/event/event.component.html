@@ -1,0 +1,13 @@
+
+<div (click)="selectEvent()" class="event-card p-2 m-2">
+
+    <img class="img-fluid" [src]="event.coverImg" alt="">
+    <!-- TODO add delete ticket button -->
+    <!-- TODO set up limitation on delete for my account only  -->
+    
+    <h6 class="text-muted">{{ formatDate(event.startDate) }}</h6>
+    <h3 [ngClass]="{ 'text-decoration-line-through': event.isCanceled }">{{ event.name }}</h3>
+    <h5>{{ event.location }}</h5>
+    <h6 [ngClass]="{ 'text-danger': (event.capacity <= 0) }">Tickets remaining: {{ event.capacity }}</h6>
+
+</div>
