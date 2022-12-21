@@ -7,6 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { EventComponent } from './components/event/event.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
     AppComponent,
     EventComponent,
     AuthButtonComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
