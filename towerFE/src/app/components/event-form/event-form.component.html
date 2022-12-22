@@ -1,0 +1,65 @@
+<form class="row" #form="ngForm" (submit)="createEvent(form)" id="event-form">
+
+
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div class="row">
+            <div class="col-md-5 m-2">
+                <label class="text-light m-2">Event Name: </label>
+                <input [(ngModel)]="eventFormData.name" type="text" name="name" id="name" aria-describedby="helpId"
+                    required />
+            </div>
+
+            <div class="col-md-5 m-2">
+                <label class="text-light m-2">Location: </label>
+                <input [(ngModel)]="eventFormData.location" type="text" name="location" id="location"
+                    aria-describedby="helpId" required />
+            </div>
+
+            <div class="col-md-5 m-2">
+                <label class="text-light m-2">Type: </label>
+                <select name="type" [(ngModel)]="eventFormData.type" class="form-select" aria-label="type select"
+                    required>
+                    <option *ngFor="let type of appState.eventTypes" value="{{type}}">{{type}}</option>
+                </select>
+            </div>
+
+            <div class="col-md-5 m-2">
+                <label class="text-light m-2">Capacity: </label>
+                <input min="0" [(ngModel)]="eventFormData.capacity" type="number" name="capacity" id="capacity"
+                    aria-describedby="helpId" required />
+            </div>
+
+            <div class="col-md-5 m-2">
+                <label class="text-light m-2">Start Date: </label>
+                <input [(ngModel)]="eventFormData.startDate" type="date" name="startDate" id="startDate"
+                    aria-describedby="helpId" required />
+            </div>
+
+            <div class="col-md-5 m-2">
+                <label class="text-light m-2">Cover Image: </label>
+                <input [(ngModel)]="eventFormData.coverImg" type="text" name="coverImg" id="coverImg"
+                    aria-describedby="helpId" required />
+            </div>
+
+            <div class="col-md-5 m-2">
+                <label class="text-light m-2">Description: </label>
+                <textarea [(ngModel)]="eventFormData.description" name="description" id="description"
+                    required></textarea>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-5 m-2">
+                <button class="btn btn-success m-2" type="button ">Create!</button>
+                <button class="btn btn-warning m-2" type="button " data-bs-dismiss="modal">Cancel!</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-1"></div>
+
+
+
+
+</form>

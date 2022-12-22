@@ -1,4 +1,4 @@
-import { eventType } from "./event";
+import { eventType } from "../app-state";
 
 export interface Ticket {
     eventId: string,

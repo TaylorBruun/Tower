@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Event } from 'src/app/Interfaces/event';
+import { TowerEvent } from 'src/app/Interfaces/event';
 import { EventsService } from 'src/app/Services/events-service.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class EventComponent {
-  @Input() event!: Event
+  @Input() event!: TowerEvent
 
   selectedId!: number
 

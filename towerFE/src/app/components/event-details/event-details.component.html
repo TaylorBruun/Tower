@@ -9,7 +9,7 @@
         <!-- TODO add cancel button -->
     </h3>
     <h5>{{ selectedEvent.location }}</h5>
-    <h6 [ngClass]="{ 'text-danger': (selectedEvent.capacity <= 0) }"> putCancelMessageHere
+    <h6 [ngClass]="{ 'text-danger': (selectedEvent.capacity <= 0) }"> {{getCancelMessage()}}
         Tickets remaining: {{ selectedEvent.capacity }}</h6>
     <h6>{{ selectedEvent.description }}</h6>
 
@@ -20,8 +20,4 @@
     <h6>Comments:
         <app-comment *ngFor="let comment of appState.comments" [comment]="comment"></app-comment>
     </h6>
-</div>
-
-<div>
-    <h4>made it to eventDetails</h4>
 </div>
