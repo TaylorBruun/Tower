@@ -1,17 +1,19 @@
 <div class="container-fluid">
-    <div class="row">
-      <div class="col">
-        <h2 *ngIf="auth.user$ | async as user">Welcome {{user.nickname}}</h2>
-        <button (click)="onClick()" class="btn btn-light m-2">Test button</button>
-        
-      </div>
-    </div>
-    <div class="row">
-      
-      <app-event class="col-5" *ngFor="let event of events" [event]="event"></app-event>
-  
-    </div>
-    <div class="row">
-      <button class="btn m-2 p-0 col-2" *ngFor="let type of eventTypes">{{type}}</button>
+  <div class="row">
+    <div class="col">
+      <h2 *ngIf="auth.user$ | async as user">Welcome {{user.nickname}}</h2>
+      <button (click)="onClick()" class="btn btn-light m-2">Test button</button>
+
     </div>
   </div>
+  <div class="row">
+
+    <button class="btn m-2 p-0 col-2" *ngFor="let type of appState.eventTypes">{{type}}</button>
+
+  </div>
+  <div class="row">
+
+    <app-event class="col-5" *ngFor="let event of appState.events" [event]="event"></app-event>
+
+  </div>
+</div>

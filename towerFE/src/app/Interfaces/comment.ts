@@ -1,10 +1,10 @@
 export interface Comment {
-    creatorId: String,
-    eventId: String,
-    body: String,
+    creatorId: string,
+    eventId: string,
+    body: string,
     creator: {
-        id: String,
-        name: String,
-        picture: String
+        id: string,
+        name: string,
+        picture: string
     } 
 }

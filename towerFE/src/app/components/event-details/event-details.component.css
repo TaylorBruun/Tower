@@ -1,0 +1,13 @@
+.cancel-btn {
+    color: red;
+    cursor: pointer
+}
+
+.cancel-btn:hover {
+    color: rgb(185, 25, 25);
+
+}
+
+.event-img {
+    max-width: 500px;
+}

@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Event } from 'src/app/Interfaces/event';
 import { EventsService } from 'src/app/Services/events-service.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-event',
@@ -10,6 +12,12 @@ import { EventsService } from 'src/app/Services/events-service.service';
 
 export class EventComponent {
   @Input() event!: Event
+
+  selectedId!: number
+
+  constructor(private route: ActivatedRoute) {
+
+  }
 
   formatDate(rawDate: Date) {
     return new Date(rawDate).toLocaleDateString()

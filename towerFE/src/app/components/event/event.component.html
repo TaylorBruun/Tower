@@ -1,5 +1,5 @@
 
-<div (click)="selectEvent()" class="event-card p-2 m-2">
+<div routerLink="/events/{{event.id}}" class="event-card p-2 m-2">
 
     <img class="img-fluid" [src]="event.coverImg" alt="">
     <!-- TODO add delete ticket button -->

@@ -2,18 +2,19 @@
 export enum eventType {'concert', 'convention', 'sport', 'digital'}
 
 export interface Event  {
-    creatorId: String,
-    name: String, 
-    description: String, 
-    coverImg: String, 
-    location: String, 
+    id: string,
+    creatorId: string,
+    name: string, 
+    description: string, 
+    coverImg: string, 
+    location: string, 
     capacity: Number, 
     startDate: Date,
     isCanceled: Boolean, 
     type: eventType,
     creator: {
-        id: String,
-        name: String,
-        picture: String
+        id: string,
+        name: string,
+        picture: string
     }
 }

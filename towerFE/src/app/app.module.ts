@@ -12,6 +12,9 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { AccountComponent } from './components/account/account.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { TicketHolderComponent } from './components/ticket-holder/ticket-holder.component';
+import { EventDetailsComponent } from './components/event-details/event-details.component';
+import { WildTestComponent } from './components/wild-test/wild-test.component';
 
 
 @NgModule({
@@ -24,6 +27,10 @@ import { CommentComponent } from './components/comment/comment.component';
     HomeComponent,
     AccountComponent,
     CommentComponent,
+    TicketHolderComponent,
+    EventDetailsComponent,
+    WildTestComponent,
+    
   ],
   imports: [
     BrowserModule,
