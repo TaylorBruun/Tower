@@ -5,6 +5,7 @@ import { NgForm, NgModel } from '@angular/forms';
 import { AppState } from 'src/app/app-state';
 import { EventsService } from 'src/app/Services/events-service.service';
 import { TowerEvent } from 'src/app/Interfaces/event';
+import { FormValidationService } from 'src/app/Services/form-validation.service';
 
 @Component({
   selector: 'app-event-form',
@@ -13,10 +14,11 @@ import { TowerEvent } from 'src/app/Interfaces/event';
 })
 export class EventFormComponent {
 
-  constructor(private eventsService: EventsService, public appState: AppState) {
-
+  
+  constructor(public formValidationService: FormValidationService, private eventsService: EventsService, public appState: AppState) {
+    
   }
-
+  
   originalEventFormData: EventFormData = {
     name: '',
     description: '',
@@ -26,7 +28,7 @@ export class EventFormComponent {
     startDate: new Date(),
     type: eventType.concert 
   }
-
+  
   eventFormData: EventFormData = {...this.originalEventFormData}
 
   createEvent(form: NgForm) {

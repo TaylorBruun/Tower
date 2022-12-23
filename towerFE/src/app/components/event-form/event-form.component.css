@@ -9,3 +9,10 @@ select{
 textarea{
     width: 30vw;
 }
+
+
+.validatorWarning{
+    background-color: #C05050;
+    width: 30vw;
+    border-radius: 1px;
+}
