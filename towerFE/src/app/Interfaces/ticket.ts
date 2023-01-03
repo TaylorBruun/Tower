@@ -1,4 +1,4 @@
-import { eventType } from "../app-state";
+
 
 export interface Ticket {
     eventId: string,
@@ -17,7 +17,7 @@ export interface Ticket {
         capacity: Number,
         startDate: Date,
         isCanceled: Boolean,
-        type: eventType,
+        type: string,
         creator: {
             id: string,
             name: string,

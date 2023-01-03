@@ -1,4 +1,4 @@
-import { eventType } from "../app-state";
+
 
 
 export interface TowerEvent  {
@@ -11,7 +11,7 @@ export interface TowerEvent  {
     capacity: Number, 
     startDate: Date,
     isCanceled: Boolean, 
-    type: eventType,
+    type: string,
     creator: {
         id: string,
         name: string,

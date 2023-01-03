@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { eventType } from "../../app-state";
 import { EventFormData } from 'src/app/Interfaces/event-form-data';
 import { NgForm, NgModel } from '@angular/forms';
 import { AppState } from 'src/app/app-state';
@@ -26,7 +25,7 @@ export class EventFormComponent {
     location: '',
     capacity: 0,
     startDate: new Date(),
-    type: eventType.concert 
+    type: ''
   }
   
   eventFormData: EventFormData = {...this.originalEventFormData}

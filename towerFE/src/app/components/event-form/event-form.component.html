@@ -1,79 +1,87 @@
-<form class="row" #form="ngForm" (submit)="createEvent(form)" id="event-form">
+<div class="container-fluid">
 
+    <form class="row" #form="ngForm" (submit)="createEvent(form)" id="event-form">
 
-    <div class="col-1"></div>
-    <div class="col-10">
-        <div class="row">
-            <div class="col-md-5 m-2">
-                <label class="text-light m-2">Event Name: </label>
-                <input #nameInput="ngModel" [(ngModel)]="eventFormData.name" type="text" name="name" id="name" aria-describedby="helpId"
-                    required />
-                <div [hidden]="this.formValidationService.validateField(nameInput) || nameInput.untouched" class="validatorWarning mt-1"><span class="ms-1">Enter a name</span></div>
-                
+        <div class="col-1"></div>
+        
+        <div class="col-10">
+            <div class="row">
+                <div class="col-md-5 m-2">
+                    <label class="text-light m-2">Event Name: </label>
+                    <input #nameInput="ngModel" [(ngModel)]="eventFormData.name" type="text" name="name" id="name"
+                        aria-describedby="helpId" required />
+                    <div [hidden]="this.formValidationService.validateField(nameInput) || nameInput.untouched"
+                        class="validatorWarning mt-1"><span class="ms-1">Enter a name</span></div>
+
+                </div>
+
+                <div class="col-md-5 m-2">
+                    <label class="text-light m-2">Location: </label>
+                    <input #locationInput="ngModel" [(ngModel)]="eventFormData.location" type="text" name="location"
+                        id="location" aria-describedby="helpId" required />
+                    <div [hidden]="this.formValidationService.validateField(locationInput) || locationInput.untouched"
+                        class="validatorWarning mt-1"><span class="ms-1">Enter a location</span></div>
+
+                </div>
+
+                <div class="col-md-5 m-2">
+                    <label class="text-light m-2">Type: </label>
+                    <select #typeInput="ngModel" name="type" [(ngModel)]="eventFormData.type" class="form-select"
+                        aria-label="type select" required>
+                        <option *ngFor="let type of appState.eventTypes" value="{{type}}">{{type}}</option>
+                    </select>
+                    <div [hidden]="this.formValidationService.validateField(typeInput) || typeInput.untouched"
+                        class="validatorWarning mt-1"><span class="ms-1">Enter a type</span></div>
+
+                </div>
+
+                <div class="col-md-5 m-2">
+                    <label class="text-light m-2">Capacity: </label>
+                    <input #capacityInput="ngModel" min="0" [(ngModel)]="eventFormData.capacity" type="number"
+                        name="capacity" id="capacity" aria-describedby="helpId" required />
+                    <div [hidden]="this.formValidationService.validateField(capacityInput) || capacityInput.untouched"
+                        class="validatorWarning mt-1"><span class="ms-1">Enter a capacity</span></div>
+
+                </div>
+
+                <div class="col-md-5 m-2">
+                    <label class="text-light m-2">Start Date: </label>
+                    <input #startDateInput="ngModel" [(ngModel)]="eventFormData.startDate" type="date" name="startDate"
+                        id="startDate" aria-describedby="helpId" required />
+                    <div [hidden]="this.formValidationService.validateField(startDateInput) || startDateInput.untouched"
+                        class="validatorWarning mt-1"><span class="ms-1">Enter a start date</span></div>
+
+                </div>
+
+                <div class="col-md-5 m-2">
+                    <label class="text-light m-2">Cover Image: </label>
+                    <input #coverImgInput="ngModel" [(ngModel)]="eventFormData.coverImg" type="text" name="coverImg"
+                        id="coverImg" aria-describedby="helpId" required />
+                    <div [hidden]="this.formValidationService.validateField(coverImgInput) || coverImgInput.untouched"
+                        class="validatorWarning mt-1"><span class="ms-1">Enter an image url</span></div>
+
+                </div>
+
+                <div class="col-md-5 m-2">
+                    <label class="text-light m-2">Description: </label>
+                    <textarea #descriptionInput="ngModel" [(ngModel)]="eventFormData.description" name="description"
+                        id="description" required></textarea>
+                    <div [hidden]="this.formValidationService.validateField(descriptionInput) || descriptionInput.untouched"
+                        class="validatorWarning mt-1"><span class="ms-1">Enter a description</span></div>
+
+                </div>
+
             </div>
-
-            <div class="col-md-5 m-2">
-                <label class="text-light m-2">Location: </label>
-                <input #locationInput="ngModel" [(ngModel)]="eventFormData.location" type="text" name="location" id="location"
-                    aria-describedby="helpId" required />
-                <div [hidden]="this.formValidationService.validateField(locationInput) || locationInput.untouched" class="validatorWarning mt-1"><span class="ms-1">Enter a location</span></div>
-
+            <div class="row">
+                <div class="col-md-5 m-2">
+                    <button class="btn btn-success m-2" type="button ">Create!</button>
+                    <button class="btn btn-warning m-2" type="button " data-bs-dismiss="modal">Cancel!</button>
+                </div>
             </div>
-
-            <div class="col-md-5 m-2">
-                <label class="text-light m-2">Type: </label>
-                <select #typeInput="ngModel" name="type" [(ngModel)]="eventFormData.type" class="form-select" aria-label="type select"
-                    required>
-                    <option *ngFor="let type of appState.eventTypes" value="{{type}}">{{type}}</option>
-                </select>
-                <div [hidden]="this.formValidationService.validateField(typeInput) || typeInput.untouched" class="validatorWarning mt-1"><span class="ms-1">Enter a type</span></div>
-
-            </div>
-
-            <div class="col-md-5 m-2">
-                <label class="text-light m-2">Capacity: </label>
-                <input #capacityInput="ngModel" min="0" [(ngModel)]="eventFormData.capacity" type="number" name="capacity" id="capacity"
-                    aria-describedby="helpId" required />
-                <div [hidden]="this.formValidationService.validateField(capacityInput) || capacityInput.untouched" class="validatorWarning mt-1"><span class="ms-1">Enter a capacity</span></div>
-
-            </div>
-
-            <div class="col-md-5 m-2">
-                <label class="text-light m-2">Start Date: </label>
-                <input #startDateInput="ngModel" [(ngModel)]="eventFormData.startDate" type="date" name="startDate" id="startDate"
-                    aria-describedby="helpId" required />
-                <div [hidden]="this.formValidationService.validateField(startDateInput) || startDateInput.untouched" class="validatorWarning mt-1"><span class="ms-1">Enter a start date</span></div>
-
-            </div>
-
-            <div class="col-md-5 m-2">
-                <label class="text-light m-2">Cover Image: </label>
-                <input #coverImgInput="ngModel" [(ngModel)]="eventFormData.coverImg" type="text" name="coverImg" id="coverImg"
-                    aria-describedby="helpId" required />
-                <div [hidden]="this.formValidationService.validateField(coverImgInput) || coverImgInput.untouched" class="validatorWarning mt-1"><span class="ms-1">Enter an image url</span></div>
-
-            </div>
-
-            <div class="col-md-5 m-2">
-                <label class="text-light m-2">Description: </label>
-                <textarea #descriptionInput="ngModel" [(ngModel)]="eventFormData.description" name="description" id="description"
-                    required></textarea>
-                <div [hidden]="this.formValidationService.validateField(descriptionInput) || descriptionInput.untouched" class="validatorWarning mt-1"><span class="ms-1">Enter a description</span></div>
-
-            </div>
-
-
         </div>
-        <div class="row">
-            <div class="col-md-5 m-2">
-                <button class="btn btn-success m-2" type="button ">Create!</button>
-                <button class="btn btn-warning m-2" type="button " data-bs-dismiss="modal">Cancel!</button>
-            </div>
-        </div>
-    </div>
-    <div class="col-1"></div>
 
+        <div class="col-1"></div>
 
+    </form>
 
-
-</form>
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../Services/events-service.service';
 import { AuthService } from "@auth0/auth0-angular";
 import { AppState } from 'src/app/app-state';
+import { AccountService as AccountService } from 'src/app/Services/account-service.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
 
  
   
-  constructor(public auth: AuthService, private eventsService: EventsService, public appState: AppState) {
+  constructor(public auth: AuthService, private accountService: AccountService, private eventsService: EventsService, public appState: AppState) {
     
   }
 
@@ -20,18 +21,14 @@ export class HomeComponent implements OnInit {
     // this.eventsService.getEvents().subscribe({
     //   next: res => {
     //     console.log('res: ', res);
-    //     this.events = res
+    //     this.appState.events = res
     //   }
     // })
+    
   }
 
   onClick() {
-    this.eventsService.getEvents().subscribe({
-      next: res => {
-        this.appState.events = res
-      }
-    })
-
+    this.appState.events = []
   }
 
 }

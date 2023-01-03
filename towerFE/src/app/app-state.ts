@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TowerEvent } from './Interfaces/event';
 import { Ticket } from './Interfaces/ticket';
 import { Comment } from './Interfaces/comment';
+import { constants } from "./constants";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Comment } from './Interfaces/comment';
 export class AppState {
 
 
-  user = {}
+  user: any
   account = {}
   events: TowerEvent[] = []
   comments: Comment[] = []
@@ -23,16 +24,13 @@ export class AppState {
   constructor() { }
 
   buildEventTypeNames(): string[] {
-    let types = []
-    for (let type in eventType) {
-      if (isNaN(Number(type))) {
-        types.push(type)
-      }
-    }
+    let types: string[] = []
+   constants.eventTypes.forEach(type =>{
+      types.push(type)
+   })
     return types
   }
 
   
 }
 
-export enum eventType { 'concert', 'convention', 'sport', 'digital' }

@@ -8,9 +8,9 @@ export class FormValidationService {
 
   constructor() { }
 
-  validateField(formModel: NgModel): boolean {
-    let fieldId = formModel.name
-    let fieldValue = formModel.model
+  validateField(modelData: NgModel): boolean {
+    let fieldId = modelData.name
+    let fieldValue = modelData.model
     let isValid: boolean = false
 
     const namePattern = RegExp('[a-z]', 'i')
@@ -51,7 +51,7 @@ export class FormValidationService {
       //   break;
         
       default:
-        console.log("hit default case in switch")
+        // console.log("hit default case in switch")
         break;
     }
     return isValid

@@ -1,4 +1,4 @@
-import { eventType } from "../app-state";
+
 
 export interface EventFormData {
     name: string, 
@@ -7,5 +7,5 @@ export interface EventFormData {
     location: string, 
     capacity: Number, 
     startDate: Date,
-    type: eventType,
+    type: string,
 }
