@@ -41,7 +41,11 @@ export class EventFormComponent {
         this.appState.events.unshift(newEvent)
         console.log('here is appstate events after unshift:', this.appState.events);
         
-      }
+      },
+      error(error) {
+        console.log('error from create event observable', error);
+        alert(error.error.error.message)
+      },
     })
   }
 

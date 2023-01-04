@@ -2,6 +2,7 @@
 
 
 export interface TowerEvent  {
+    createdAt?: string,
     id: string,
     creatorId: string,
     name: string, 

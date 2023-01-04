@@ -9,9 +9,7 @@
 
                 <div class="container-fluid">
 
-                    <form class="row" #form="ngForm" (submit)="createEvent(form)" id="event-form">
-
-                        
+                    <form class="row" #form="ngForm"  id="event-form">
 
                         <div class="col-10">
                             <div class="row">
@@ -23,14 +21,13 @@
                                         class="validatorWarning mt-1"><span class="ms-1">Enter a name</span>
                                     </div>
 
-                                    
-
                                 </div>
 
                                 <div class="col-md-6 m-0">
                                     <label class="text-light m-2">Location 🍕: </label>
                                     <input #locationInput="ngModel" [(ngModel)]="eventFormData.location" type="text"
                                         name="location" id="location" aria-describedby="helpId" required />
+                                    <!-- NOTE example of angular conditional attribute -->
                                     <!-- <div [hidden]="this.formValidationService.validateField(locationInput) || locationInput.untouched"
                                         class="validatorWarning mt-1"><span class="ms-1">Enter a location</span>
                                     </div> -->
@@ -59,7 +56,7 @@
                                 </div>
 
                                 <div class="col-md-6 m-0">
-                                    <label class="text-light m-2">Capacity: </label>
+                                    <label class="text-light m-2">Capacity 🍔: </label>
                                     <input #capacityInput="ngModel" min="0" [(ngModel)]="eventFormData.capacity"
                                         type="number" name="capacity" id="capacity" aria-describedby="helpId"
                                         required />
@@ -107,18 +104,17 @@
                             </div>
                         </div>
 
-                        
-
                     </form>
 
                 </div>
 
             </div>
             <div class="modal-footer">
-                <button class="btn create-button m-2" type="button ">Create!</button>
+                <button (click)="createEvent(form)" class="btn create-button m-2" type="button ">Create!</button>
                 <button class="btn cancel-button m-2" type="button "
                     data-bs-dismiss="modal">Cancel!</button>
             </div>
+            
         </div>
     </div>
 </div>

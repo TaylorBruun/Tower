@@ -10,6 +10,10 @@ textarea{
     width: 20vw;
 }
 
+.modal-content{
+    background-color: #cfc8c8 !important;
+}
+
 
 .validatorWarning{
     background-color: #e07070;
@@ -25,13 +29,13 @@ textarea{
 }
 
 .create-button{
-    color: #292929;
-    background: #579ece;
+    color: #292929 !important;
+    background: var(--bs-primary);
 }
 
 .cancel-button{
-    color: #292929;
-    background: #e07070;
+    color: #292929 !important;
+    background: var(--bs-danger);
 }
 
 *{

@@ -11,24 +11,21 @@ import { AccountService as AccountService } from 'src/app/Services/account-servi
 })
 export class HomeComponent implements OnInit {
 
- 
-  
+
+
   constructor(public auth: AuthService, private accountService: AccountService, private eventsService: EventsService, public appState: AppState) {
-    
+
   }
 
   ngOnInit() {
-    // this.eventsService.getEvents().subscribe({
-    //   next: res => {
-    //     console.log('res: ', res);
-    //     this.appState.events = res
-    //   }
-    // })
-    
+
+
   }
 
   onClick() {
-    this.appState.events = []
+    this.appState.displayedEvents.reverse()
+
+
   }
 
 }

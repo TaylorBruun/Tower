@@ -16,6 +16,7 @@ import { EventDetailsComponent } from './components/event-details/event-details.
 import { WildTestComponent } from './components/wild-test/wild-test.component';
 import { EventFormComponent } from './components/event-form/event-form.component';
 import { FormsModule } from "@angular/forms";
+import { FilterButtonComponent } from './components/filter-button/filter-button.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FormsModule } from "@angular/forms";
     EventDetailsComponent,
     WildTestComponent,
     EventFormComponent,
+    FilterButtonComponent,
   ],
   imports: [
     BrowserModule,

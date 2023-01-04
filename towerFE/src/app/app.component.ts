@@ -25,7 +25,15 @@ export class AppComponent implements OnInit {
     this.eventsService.getEvents().subscribe({
       next: res => {
         this.appState.events = res
-      }
+        
+        
+        if (!this.appState.displayedEvents.length) {
+          this.appState.displayedEvents = res
+        }
+      },
+      error(err) {
+        console.log(err);
+      },
     })
   }
 

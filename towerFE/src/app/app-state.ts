@@ -17,6 +17,7 @@ export class AppState {
   currTickets: Ticket[] = []
   eventsAttending: TowerEvent[] = []
   myTickets: Ticket[] = []
+  displayedEvents: TowerEvent[] = []
 
   eventTypes: string[] = this.buildEventTypeNames()
 
