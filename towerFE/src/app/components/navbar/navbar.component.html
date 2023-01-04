@@ -14,7 +14,7 @@
                 </li>
 
                 <li class="nav-item btn">
-                    <a *ngIf="auth.isAuthenticated$ | async" routerLink="/event-form">New Event</a>
+                    <a *ngIf="auth.isAuthenticated$ | async" data-bs-toggle="modal" data-bs-target="#exampleModal">New Event</a>  
                 </li>
                 
             </ul>
@@ -23,3 +23,10 @@
     </div>
 
 </nav>
+
+
+
+
+  
+
+<app-event-form></app-event-form>

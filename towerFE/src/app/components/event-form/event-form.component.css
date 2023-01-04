@@ -1,18 +1,40 @@
 input{
-    width: 30vw;
+    width: 20vw;
 }
 
 select{
-    width: 30vw;
+    width: 20vw;
 }
 
 textarea{
-    width: 30vw;
+    width: 20vw;
 }
 
 
 .validatorWarning{
-    background-color: #C05050;
-    width: 30vw;
+    background-color: #e07070;
+    width: 20vw;
     border-radius: 1px;
+    height: 4vh;
+}
+
+.validatorSpacer{
+    width: 20vw;
+    border-radius: 1px;
+    height: 4vh;
+}
+
+.create-button{
+    color: #292929;
+    background: #579ece;
+}
+
+.cancel-button{
+    color: #292929;
+    background: #e07070;
+}
+
+*{
+    color: #292929 !important;
+
 }
