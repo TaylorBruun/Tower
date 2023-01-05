@@ -9,7 +9,7 @@
 
                 <div class="container-fluid">
 
-                    <form class="row" #form="ngForm"  id="event-form">
+                    <form class="row" #form="ngForm" id="event-form">
 
                         <div class="col-10">
                             <div class="row">
@@ -17,9 +17,15 @@
                                     <label class="text-light m-2">Event Name: </label>
                                     <input #nameInput="ngModel" [(ngModel)]="eventFormData.name" type="text" name="name"
                                         id="name" aria-describedby="helpId" required />
-                                    <div [hidden]="this.formValidationService.validateField(nameInput) || nameInput.untouched"
-                                        class="validatorWarning mt-1"><span class="ms-1">Enter a name</span>
-                                    </div>
+
+                                    <ng-container
+                                        *ngIf="this.formValidationService.validateField(nameInput) || nameInput.untouched; else nameInputTemplate">
+                                        <div class="validatorSpacer mt-1"></div>
+                                    </ng-container>
+
+                                    <ng-template #nameInputTemplate>
+                                        <div id="nameErrorMessage" class="validatorWarning mt-1">{{this.formValidationService.getErrorMessage(nameInput)}}</div>
+                                    </ng-template>
 
                                 </div>
 
@@ -29,15 +35,17 @@
                                         name="location" id="location" aria-describedby="helpId" required />
                                     <!-- NOTE example of angular conditional attribute -->
                                     <!-- <div [hidden]="this.formValidationService.validateField(locationInput) || locationInput.untouched"
-                                        class="validatorWarning mt-1"><span class="ms-1">Enter a location</span>
+                                         class="validatorWarning mt-1"><span class="ms-1">Enter a location</span>
                                     </div> -->
 
-                                    <ng-container *ngIf="this.formValidationService.validateField(locationInput) || locationInput.untouched; else locationInputTemplate" >
+                                    <ng-container
+                                        *ngIf="this.formValidationService.validateField(locationInput) || locationInput.untouched; else locationInputTemplate">
                                         <div class="validatorSpacer mt-1"></div>
                                     </ng-container>
-                                    
+
                                     <ng-template #locationInputTemplate>
-                                        <div class="validatorWarning mt-1">Enter a location</div>
+                                        <div id="locationErrorMessage" class="validatorWarning mt-1">
+                                            {{this.formValidationService.getErrorMessage(locationInput)}}</div>
                                     </ng-template>
 
                                 </div>
@@ -49,9 +57,16 @@
                                         <option *ngFor="let type of appState.eventTypes" value="{{type}}">{{type}}
                                         </option>
                                     </select>
-                                    <div [hidden]="this.formValidationService.validateField(typeInput) || typeInput.untouched"
-                                        class="validatorWarning mt-1"><span class="ms-1">Enter a type</span>
-                                    </div>
+
+
+                                    <ng-container
+                                        *ngIf="this.formValidationService.validateField(typeInput) || typeInput.untouched; else typeInputTemplate">
+                                        <div class="validatorSpacer mt-1"></div>
+                                    </ng-container>
+
+                                    <ng-template #typeInputTemplate>
+                                        <div id="typeErrorMessage" class="validatorWarning mt-1">{{this.formValidationService.getErrorMessage(typeInput)}}</div>
+                                    </ng-template>
 
                                 </div>
 
@@ -60,9 +75,17 @@
                                     <input #capacityInput="ngModel" min="0" [(ngModel)]="eventFormData.capacity"
                                         type="number" name="capacity" id="capacity" aria-describedby="helpId"
                                         required />
-                                    <div [hidden]="this.formValidationService.validateField(capacityInput) || capacityInput.untouched"
-                                        class="validatorWarning mt-1"><span class="ms-1">Enter a capacity</span>
-                                    </div>
+
+
+                                    <ng-container
+                                        *ngIf="this.formValidationService.validateField(capacityInput) || capacityInput.untouched; else capacityInputTemplate">
+                                        <div class="validatorSpacer mt-1"></div>
+                                    </ng-container>
+
+                                    <ng-template #capacityInputTemplate>
+                                        <div id="capacityErrorMessage" class="validatorWarning mt-1">{{this.formValidationService.getErrorMessage(capacityInput)}}
+                                        </div>
+                                    </ng-template>
 
                                 </div>
 
@@ -70,9 +93,16 @@
                                     <label class="text-light m-2">Start Date: </label>
                                     <input #startDateInput="ngModel" [(ngModel)]="eventFormData.startDate" type="date"
                                         name="startDate" id="startDate" aria-describedby="helpId" required />
-                                    <div [hidden]="this.formValidationService.validateField(startDateInput) || startDateInput.untouched"
-                                        class="validatorWarning mt-1"><span class="ms-1">Enter a start date</span>
-                                    </div>
+
+                                    <ng-container
+                                        *ngIf="this.formValidationService.validateField(startDateInput) || startDateInput.untouched; else startDateInputTemplate">
+                                        <div class="validatorSpacer mt-1"></div>
+                                    </ng-container>
+
+                                    <ng-template #startDateInputTemplate>
+                                        <div id="startDateErrorMessage" class="validatorWarning mt-1">{{this.formValidationService.getErrorMessage(startDateInput)}}
+                                        </div>
+                                    </ng-template>
 
                                 </div>
 
@@ -80,9 +110,16 @@
                                     <label class="text-light m-2">Cover Image: </label>
                                     <input #coverImgInput="ngModel" [(ngModel)]="eventFormData.coverImg" type="text"
                                         name="coverImg" id="coverImg" aria-describedby="helpId" required />
-                                    <div [hidden]="this.formValidationService.validateField(coverImgInput) || coverImgInput.untouched"
-                                        class="validatorWarning mt-1"><span class="ms-1">Enter an image url</span>
-                                    </div>
+
+                                    <ng-container
+                                        *ngIf="this.formValidationService.validateField(coverImgInput) || coverImgInput.untouched; else coverImgInputTemplate">
+                                        <div class="validatorSpacer mt-1"></div>
+                                    </ng-container>
+
+                                    <ng-template #coverImgInputTemplate>
+                                        <div id="coverImgErrorMessage" class="validatorWarning mt-1">{{this.formValidationService.getErrorMessage(coverImgInput)}}
+                                        </div>
+                                    </ng-template>
 
                                 </div>
 
@@ -90,16 +127,23 @@
                                     <label class="text-light m-2">Description: </label>
                                     <textarea #descriptionInput="ngModel" [(ngModel)]="eventFormData.description"
                                         name="description" id="description" required></textarea>
-                                    <div [hidden]="this.formValidationService.validateField(descriptionInput) || descriptionInput.untouched"
-                                        class="validatorWarning mt-1"><span class="ms-1">Enter a description</span>
-                                    </div>
+
+
+                                    <ng-container
+                                        *ngIf="this.formValidationService.validateField(descriptionInput) || descriptionInput.untouched; else descriptionInputTemplate">
+                                        <div class="validatorSpacer mt-1"></div>
+                                    </ng-container>
+
+                                    <ng-template #descriptionInputTemplate>
+                                        <div id="descriptionErrorMessage" class="validatorWarning mt-1">{{this.formValidationService.getErrorMessage(descriptionInput)}}</div>
+                                    </ng-template>
 
                                 </div>
 
                             </div>
                             <div class="row">
                                 <div class="col-md-6 m-0">
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -111,10 +155,9 @@
             </div>
             <div class="modal-footer">
                 <button (click)="createEvent(form)" class="btn create-button m-2" type="button ">Create!</button>
-                <button class="btn cancel-button m-2" type="button "
-                    data-bs-dismiss="modal">Cancel!</button>
+                <button class="btn cancel-button m-2" type="button " data-bs-dismiss="modal">Cancel!</button>
             </div>
-            
+
         </div>
     </div>
 </div>

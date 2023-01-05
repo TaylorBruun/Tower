@@ -5,6 +5,7 @@ import { AppState } from 'src/app/app-state';
 import { TowerEvent } from 'src/app/Interfaces/event';
 import { EventsService } from 'src/app/Services/events-service.service';
 import { TicketsService } from 'src/app/Services/tickets-service.service';
+import { TicketHolderComponent } from '../ticket-holder/ticket-holder.component';
 
 
 
@@ -33,7 +34,15 @@ export class EventDetailsComponent implements OnInit {
         this.appState.currTickets = res
       }
     })
+    this.eventsService.getEventById(this.selectedId).subscribe({
+      error: error => {
+        console.log(error);
+        alert('Invalid event ID')
+        this.router.navigate([''])
+      }
+    })
   }
+
 
   createTicket(eventId: string) {
     let ticketData = {
@@ -44,9 +53,27 @@ export class EventDetailsComponent implements OnInit {
     ticketData.userId = this.appState.user.id
     this.ticketsService.createTicket(ticketData)
   }
+  
+  deleteTicket(){
+    let foundTicket = this.appState.currTickets.find(ticket => (ticket.accountId == this.appState.user.id) && (ticket.eventId == this.selectedEvent.id))
+    if (foundTicket?.id){
+      this.ticketsService.deleteTicket(foundTicket.id)
+      // NOTE the '=' is used even though filter is a mutating method because it causes angular to reactively update the page
+      this.appState.currTickets = this.appState.currTickets.filter(ticket => !(ticket.id == foundTicket!.id))
+    } else {
+      console.error('No ticket with that ID')
+    }
+  }
 
   getCancelMessage(): string {
     return this.selectedEvent.isCanceled ? `It's canceled :(` : `It's on!`
+  }
+
+  alreadyAttending(): boolean {
+    let userIdsAttendingEvent: string[] = []
+    let userId = this.appState.user?.id
+    this.appState.currTickets.forEach(ticket => userIdsAttendingEvent.push(ticket.accountId));
+    return userIdsAttendingEvent.includes(userId)
   }
 
 

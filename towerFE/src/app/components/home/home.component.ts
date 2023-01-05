@@ -25,6 +25,16 @@ export class HomeComponent implements OnInit {
   onClick() {
     this.appState.displayedEvents.reverse()
 
+    // let currentDate1 = new Date().valueOf()
+    // let daves: string[] = []
+    // for (let i = 0; i < 10000; i++) {
+    //   daves.push('dave')
+    // }
+    // let currentDate2 = new Date().valueOf()
+    // console.log(currentDate1 - currentDate2);
+    // console.log(daves.length);
+    
+    
 
   }
 

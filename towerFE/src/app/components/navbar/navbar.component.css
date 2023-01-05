@@ -7,3 +7,13 @@ nav{
 *{
     color: rgb(223, 243, 255);
 }
+
+a{
+    color: #e9f0ff !important;
+    text-decoration: none;
+}
+
+a:hover{
+    opacity: .6;
+    text-decoration: underline !important;
+}

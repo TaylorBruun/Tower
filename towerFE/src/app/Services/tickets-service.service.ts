@@ -9,6 +9,7 @@ import { Ticket } from '../Interfaces/ticket';
   providedIn: 'root'
 })
 export class TicketsService {
+ 
 
   constructor(private http: HttpClient, public appState: AppState) { }
 
@@ -26,5 +27,9 @@ export class TicketsService {
 
   getMyTickets(): Observable<any> {
     return this.http.get(`${constants.baseURL}account/tickets`)
+  }
+
+  deleteTicket(ticketId: string) {
+    this.http.delete(`${constants.baseURL}api/tickets/${ticketId}`).subscribe()
   }
 }

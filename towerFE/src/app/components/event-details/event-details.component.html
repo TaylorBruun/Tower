@@ -1,43 +1,54 @@
 <div class="container-fluid">
     <div class="row">
-        <div>
-            <img [src]="selectedEvent.coverImg" alt="" class="event-img">
-        </div>
+        <div *ngIf="selectedEvent" class="col">
+            <div class="row">
+                <div class="col-md-6">
+                    <img *ngIf="selectedEvent" [src]="selectedEvent.coverImg" alt="" class="event-img">
+                </div>
 
-        <div>
-            <button *ngIf="auth.user$ | async as user" (click)="createTicket(selectedEvent.id)"
-                class="btn btn-success m-1">
-                <!-- TODO add check for if event is attendable: *ngIf="(selectedEvent.capacity > 0) && (!selectedEvent.isCanceled) && (!alreadyAttending(selectedEvent.id))" -->
-                Attend</button>
-        </div>
-        <div>
-            <h5><img [src]="selectedEvent.creator.picture" alt="" class="img-fluid">{{selectedEvent.creator.name}}</h5>
-        </div>
-        <div>
-            <h3 [ngClass]="{ 'text-decoration-line-through': selectedEvent.isCanceled }">{{ selectedEvent.name }}
-                <!-- TODO add cancel button -->
-            </h3>
-        </div>
-        <div>
-            <h5>{{ selectedEvent.location }}</h5>
-        </div>
-        <div>
-            <h6 [ngClass]="{ 'text-danger': (selectedEvent.capacity <= 0) }"> {{getCancelMessage()}}
-                Tickets remaining: {{ selectedEvent.capacity }}</h6>
-        </div>
-        <div>
-            <h6>{{ selectedEvent.description }}</h6>
-        </div>
-        <div>
-            <h6>Attending:
-                <app-ticket-holder *ngFor="let ticket of appState.currTickets" [ticket]="ticket"></app-ticket-holder>
-            </h6>
-        </div>
-        <div>
-            <h6>Comments:
-                <app-comment *ngFor="let comment of appState.comments" [comment]="comment"></app-comment>
-            </h6>
-        </div>
+                <div class="col-md-6">
+                    <div>
+                        <h5><img [src]="selectedEvent.creator.picture" alt=""
+                                class="img-fluid">{{selectedEvent.creator.name}}</h5>
+                    </div>
+                    <div>
+                        <h3 [ngClass]="{ 'text-decoration-line-through': selectedEvent.isCanceled }">{{
+                            selectedEvent.name }}
+                            <!-- TODO add cancel button -->
+                        </h3>
+                    </div>
+                    <div>
+                        <h5>{{ selectedEvent.location }}</h5>
+                    </div>
+                    <div>
+                        <h6 [ngClass]="{ 'text-danger': (selectedEvent.capacity <= 0) }"> {{getCancelMessage()}}
+                            Tickets remaining: {{ selectedEvent.capacity }}</h6>
+                    </div>
+                    <div>
+                        <h6>{{ selectedEvent.description }}</h6>
+                    </div>
+                    <div>
+                        <button *ngIf="(selectedEvent.capacity > 0) && (!selectedEvent.isCanceled) && (auth.user$ | async) && !alreadyAttending()" (click)="createTicket(selectedEvent.id)"
+                            class="btn btn-success m-1"> 
+                            Attend</button>
+                        <button *ngIf="alreadyAttending()" (click)="deleteTicket()"
+                            class="btn btn-danger m-1"> 
+                            Cancel Ticket</button>
+                        
+                    </div>
 
+                    <div>
+                        <h6 class="my-1">Attending:
+                            <div class="row justify-content-around">
+                                <div class="col">
+                                    <app-ticket-holder *ngFor="let ticket of appState.currTickets" [ticket]="ticket"></app-ticket-holder>
+                                </div>
+                            </div>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+

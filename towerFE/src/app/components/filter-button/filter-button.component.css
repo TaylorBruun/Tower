@@ -1,3 +1,8 @@
 .filter-button{
     color: var(--bs-warning);
 }
+
+.filter-button:hover{
+    color: #ffee00;
+    text-decoration: underline !important;
+}

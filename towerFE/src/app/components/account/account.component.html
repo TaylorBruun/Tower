@@ -3,7 +3,7 @@
     <h2> <img [src]="user.picture" class="rounded"> <span class="m-2">Welcome {{user.nickname}}</span> </h2>
 
     <div class="row">
-        <h5>Your Events:</h5>
+        <h5>Your Tickets:</h5>
         <app-event class="col-4" *ngFor="let event of appState.eventsAttending" [event]="event"></app-event>
 
     </div>

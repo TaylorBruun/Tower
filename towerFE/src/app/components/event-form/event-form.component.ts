@@ -13,6 +13,8 @@ import { FormValidationService } from 'src/app/Services/form-validation.service'
 })
 export class EventFormComponent {
 
+  locationError: string = ''
+
   
   constructor(public formValidationService: FormValidationService, private eventsService: EventsService, public appState: AppState) {
     

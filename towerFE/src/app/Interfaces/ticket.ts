@@ -1,6 +1,7 @@
 
 
 export interface Ticket {
+    id: string
     eventId: string,
     accountId: string,
     account: {
